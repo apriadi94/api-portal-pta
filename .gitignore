@@ -2,5 +2,8 @@
 # Dependency directories
 node_modules/
 
+#logs
+logs/
+
 # dotenv environment variables file
 .env
