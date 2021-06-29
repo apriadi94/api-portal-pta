@@ -7,7 +7,6 @@ exports.getArtikel = async (parentId, page) => {
         const offset =  10 * (Number(page) - 1)
         const limit = Number(page) * 10
 
-        console.log(offset, limit)
         Models.sequelize.query(`
             SELECT a.id, a.title, a.introtext
             FROM ydfui_content a
