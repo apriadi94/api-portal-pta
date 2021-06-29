@@ -57,7 +57,13 @@ const getImage = (str) => {
         const dom = new JSDOM(str, { includeNodeLocations: true });
         const img = dom.window.document.querySelector("img")
         if(img){
-            resolve(`https://www.pta-banjarmasin.go.id/${img.getAttribute('src')}`)
+            let image
+            if(img.getAttribute('src').includes("http:")){
+                image = img.getAttribute('src')
+            }else{
+                image = `https://www.pta-banjarmasin.go.id/${img.getAttribute('src')}`
+            }
+            resolve(image)
         }else{
             resolve('https://upload.wikimedia.org/wikipedia/id/6/65/Logo_pta_banjarmasin.jpg')
         }
