@@ -3,6 +3,8 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const moment = require('moment')
 require('moment/locale/id');
+const { logger } = require('../utils/logger')
+
 
 exports.getArtikel = async (parentId, page) => {
     return new Promise((resolve, reject) => {
@@ -45,6 +47,7 @@ exports.getArtikelById = (contentId) => {
             left join ydfui_users b on a.created_by = b.id
             where a.id = ${contentId}
         `).then(async result => {
+            logger.error('tes')
             const data = JSON.stringify(result[0], null, 2)
             const artikelToJson = JSON.parse(data)
             resolve(artikelToJson)
